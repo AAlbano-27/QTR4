@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Sign Up</title>
+</head>
+<body>
+    
+    <form id="login">
+        
+        <legend>CAMP HALF-BLOOD SIGN UP SHEET </legend>
+            <label for="name">Full Name:</label>
+            <input type="text" id="name" name="userName">
+            
+            <label for="uName">Username:</label><br>
+            <input type="text" id="uName" name="username" required><br>
+
+            <label for="pword">Password:</label>
+            <input type="password" id="pWord" name="pword">
+            <div id="passwordError" class="error"></div>
+            
+            <label for="cpass">Confirm Password:</label><br>
+            <input type="password" id="cPass" name="confirm_password" required>
+            <div id="confirmPass" class="error"></div>
+            
+            <label for="email">Email:</label><br>
+            <input type="email" id="email" name="email" required>
+            <div id="emailError" class="error"></div>
+
+            <label for="address">Address:</label><br>
+            <input id="address" name="address" rows="4" required><br>
+
+            <label for="interests">Interests:</label><br>
+            <input id="interests" name="interests" rows="4"><br>
+
+            <button onclick="validateForm()">Submit</button>
+            <button onclick="clearForm()">Reset</button>
+        
+    </form>
+    
+<script>
+    function validateForm() {
+        var name = document.getElementById("name");
+        var uName = document.getElementById("uName");
+        var pass = document.getElementById("pWord");
+        var conPass = document.getElementById("cPass");
+        var email = document.getElementById("email");
+        var address = document.getElementById("address");
+
+        var passError = document.getElementById("passwordError");
+        var cPassError = document.getElementById("confirmPass");
+        var emailError = document.getElementById("emailError");
+
+        } if (conPass !== pass) {
+            conPassError.textContent = 'Passwords do not match';
+            valid = false;
+        }
+
+        var emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        } else if (!emailPattern.test(email)) {
+            emailError.textContent = 'Invalid email format';
+            valid = false;
+        } else {
+            emailError.textContent = '';
+        }
+
+        if (!valid) {
+            event.preventDefault(); // Prevent form submission if validation fails
+        }
+    }
+</script>    
+</body>
+<style>
+    body, html{
+        height: 100%;
+        font-family: Gil Sans, sans-serif;
+    }
+    body {
+        
+        background-color: #FFA500;
+        background-image: url('https://readriordan.com/wp-content/uploads/2018/11/Cabins-CHB.1200.jpg');
+        background-position: center;
+        background-size: cover;
+        height: 100%;
+        background-repeat: no-repeat;
+        background-color: currentColor;
+    }
+    form {
+        max-width: 400px;
+        margin: 15px auto;
+        background-color: rgba(252, 173, 88, 0.5);
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+    input{
+        background-color: #FFF8E3;
+        width: 100%;
+        padding: 10px;
+        margin-top: 8px;
+        margin-bottom: 2px;
+        border: 1px solid #ddd;
+        border-radius: 4px;
+        box-sizing: border-box;
+        font-size: 9px;
+    }
+    
+    button {
+        background-color: orange;
+        color: black;
+        padding: 12px 20px;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        font-size: 16px;
+
+    }
+    
+    button:hover {
+        background-color: darkorange;
+    }
+    .error {
+        color: red;
+        font-size: 12px;
+    }
+</style>
+</html>
