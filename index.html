@@ -7,7 +7,7 @@
     
     <form id="login">
         
-        <legend>CAMP HALF-BLOOD SIGN UP SHEET </legend>
+        <legend><h1>CAMP HALF-BLOOD SIGN UP SHEET </h1></legend>
             <label for="name">Full Name:</label>
             <input type="text" id="name" name="userName">
             
@@ -27,10 +27,10 @@
             <div id="emailError" class="error"></div>
 
             <label for="address">Address:</label><br>
-            <input id="address" name="address" rows="4" required><br>
+            <textarea id="address" name="address" rows="4" required></textarea><br>
 
             <label for="interests">Interests:</label><br>
-            <input id="interests" name="interests" rows="4"><br>
+            <textarea id="interests" name="interests" rows="4"></textarea><br>
 
             <button onclick="validateForm()">Submit</button>
             <button onclick="clearForm()">Reset</button>
@@ -54,18 +54,17 @@
             conPassError.textContent = 'Passwords do not match';
             valid = false;
         }
-
+    
         var emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-        } else if (!emailPattern.test(email)) {
-            emailError.textContent = 'Invalid email format';
-            valid = false;
-        } else {
-            emailError.textContent = '';
-        }
-
-        if (!valid) {
-            event.preventDefault(); // Prevent form submission if validation fails
-        }
+            if (email === '') {
+                emailError.textContent = 'Email is required';
+                valid = false;
+            } else if (!emailPattern.test(email)) {
+                emailError.textContent = 'Invalid email format';
+                valid = false;
+            } else {
+                emailError.textContent = '';
+            }
     }
 </script>    
 </body>
@@ -75,17 +74,16 @@
         font-family: Gil Sans, sans-serif;
     }
     body {
-        
-        background-color: #FFA500;
+        background-color: black;
         background-image: url('https://readriordan.com/wp-content/uploads/2018/11/Cabins-CHB.1200.jpg');
         background-position: center;
         background-size: cover;
         height: 100%;
         background-repeat: no-repeat;
-        background-color: currentColor;
+        background-attachment: fixed;
     }
     form {
-        max-width: 400px;
+        max-width: 600px;
         margin: 15px auto;
         background-color: rgba(252, 173, 88, 0.5);
         padding: 20px;
@@ -96,14 +94,23 @@
         background-color: #FFF8E3;
         width: 100%;
         padding: 10px;
-        margin-top: 8px;
-        margin-bottom: 2px;
-        border: 1px solid #ddd;
+        margin-top: 10px;
+        margin-bottom: 10px;
+        border: 2px solid #ddd;
         border-radius: 4px;
         box-sizing: border-box;
-        font-size: 9px;
+        font-size: 20px;
     }
-    
+    textarea{
+        background-color: #FFF8E3;
+        width: 100%;
+        padding: 10px;
+        margin-top: 5px;
+        margin-bottom: 15px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        box-sizing: border-box;
+    }
     button {
         background-color: orange;
         color: black;
@@ -112,7 +119,6 @@
         border-radius: 4px;
         cursor: pointer;
         font-size: 16px;
-
     }
     
     button:hover {
